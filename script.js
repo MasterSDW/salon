@@ -96,16 +96,20 @@ function applyLanguage(lang) {
   });
 }
 
-document.querySelectorAll('.lang-btn').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    applyLanguage(btn.getAttribute('data-lang'));
-  });
-});
-
 document.addEventListener('DOMContentLoaded', () => {
+  // Инициализация языка при загрузке
   applyLanguage(currentLang);
+  
+  // Установка текущего года
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Обработчики кнопок языков
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      applyLanguage(btn.getAttribute('data-lang'));
+    });
+  });
 
   // Dark mode toggle
   const themeToggle = document.getElementById('themeToggle');
